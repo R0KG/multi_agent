@@ -80,11 +80,13 @@ Automated tests cover parallelism, explicit handoffs, failure gating, cancellati
 timeouts, SDK error handling, and actual SDK configuration without inference.
 The offline demo exercises the CLI and artifacts.
 
-The initial live smoke test on 2026-10-29 reached Command Code but received HTTP
-401. A direct Chat Completions request with the same key also received HTTP 401.
-Successful live multi-agent inference remains unverified until a valid key is
-configured. To repeat the smoke test, run `npm start` and check for three finished
-agents, a `completed` run status, and a nonempty `final.md`.
+The live smoke test on 2026-10-29 completed through Command Code using
+`deepseek/deepseek-v4-flash` for all three sessions. The two specialists finished
+in about 6.8 and 6.9 seconds, followed by the coordinator in about 9.1 seconds.
+Artifact checks confirmed overlapping specialist runs, exact answer handoff,
+three successful results, `completed` status, and a nonempty `final.md`.
+An earlier attempt received HTTP 401; the subsequent retry succeeded.
+To repeat the smoke test, run `npm start` and inspect the resulting run directory.
 
 This MVP does not implement automatic crash recovery, workflow resume, tool
 sandboxing, distributed workers, or a production service. A failed run must be
