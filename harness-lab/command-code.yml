@@ -1,0 +1,13 @@
+- id: agent-default-model
+  config:
+    provider: command-code
+    model: deepseek/deepseek-v4-flash
+- id: llm-pi-ai
+  config:
+    providers:
+      command-code:
+        apiKeyEnv: COMMAND_CODE
+        api: openai-completions
+        baseURL: https://api.commandcode.ai/provider/v1
+        models:
+          - id: deepseek/deepseek-v4-flash
